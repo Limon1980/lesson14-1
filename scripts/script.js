@@ -1,15 +1,31 @@
 'use strict';
 
-function getResult(x, y) {
-  let result = 0;
-  let exp = String(x ** y);
-  console.log(exp);
+const country = document.querySelector('#country');
+const city = document.querySelector('#city');
+const result = document.querySelector('.result');
 
-  for (let i = 0; i < exp.length; i++) {
-    result += Number(exp[i]);
-  }
+console.log(country);
 
-  return result;
-}
+city.style.display = 'none';
 
-console.log(getResult(4, 8));
+const cityArr = {
+  rus: ['Москва', 'Санк-Петербург', 'Новосибирск', 'Екатеринбург', 'Нижний Новгород', 'Казань', 'Челябинск'],
+  uk: ['Киев', 'Харьков', 'Одесса', 'Днепр', 'Донецк', 'Запорожье', 'Львов'],
+  bel: ['Минск', 'Гомель', 'Могилёв', 'Витебск', 'Гродно', 'Брест'],
+  jap: ['Токио', 'Киото', 'Осака', 'Иокогама']
+};
+
+country.addEventListener('change', () => {
+
+  let arr = cityArr[country.value];
+  city.innerHTML = '';
+  arr.forEach((element) => {
+    city.insertAdjacentHTML('afterbegin', `<option value="${element}">${element}</option>`);
+  });
+  city.style.display = '';
+
+});
+
+city.addEventListener('change', () => {
+  result.textContent = country.options[country.options.selectedIndex].text + ' ' + city.value;
+});
