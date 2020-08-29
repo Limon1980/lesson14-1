@@ -1,39 +1,22 @@
 'use strict';
 
-const myLesson = [
-  { lesson: 1, type: 'basic', points: 2 },
-  { lesson: 2, type: 'additional', points: 4 },
-  { lesson: 3, type: 'basic', points: 6 },
-  { lesson: 4, type: 'additional', points: 3 },
-  { lesson: 5, type: 'basic', points: 4 },
-  { lesson: 6, type: 'basic', points: 2 },
-  { lesson: 7, type: 'additional', points: 2 },
-  { lesson: 8, type: 'basic', points: 6 },
-  { lesson: 9, type: 'basic', points: 4 },
-  { lesson: 10, type: 'basic', points: 6 },
-  { lesson: 11, type: 'additional', points: 5 },
-  { lesson: 12, type: 'basic', points: 2 },
-  { lesson: 13, type: 'additional', points: 2 },
-  { lesson: 14, type: 'basic', points: 4 },
-  { lesson: 15, type: 'additional', points: 1 },
-  { lesson: 16, type: 'additional', points: 7 },
-];
+const a = document.querySelector('#a');
+const b = document.querySelector('#b');
+const sum = document.querySelector('#sum');
+const mult = document.querySelector('#mult');
+const res = document.querySelector('#res');
 
-// console.log(myLesson);
-
-const foo = (arr) => {
-  let newArr = [];
-  for (let i = 0; i < arr.length; i++) {
-    let { lesson, type, points } = arr[i];
-
-    if (type === 'additional') {
-      continue;
-    } else {
-      const obj = { lesson: lesson, type: type, points: points / 2 };
-      newArr.push(obj);
-    }
-  }
-  return newArr;
+const calculator = {
+  sum: function () {
+    this.show(+a.value + +b.value);
+  },
+  mult: function () {
+    this.show(+a.value * +b.value);
+  },
+  show: function (result) {
+    res.value = result;
+  },
 };
-console.log(myLesson);
-console.log(foo(myLesson));
+
+sum.addEventListener('click', calculator.sum.bind(calculator));
+mult.addEventListener('click', calculator.mult.bind(calculator));
