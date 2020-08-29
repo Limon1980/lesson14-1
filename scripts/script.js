@@ -22,7 +22,7 @@ country.addEventListener('change', () => {
   arr.forEach((element) => {
     city.insertAdjacentHTML('afterbegin', `<option value="${element}">${element}</option>`);
   });
-  city.style.display = '';
+  city.style.display = 'inline-block';
 
 });
 
