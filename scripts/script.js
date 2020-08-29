@@ -22,18 +22,18 @@ const myLesson = [
 // console.log(myLesson);
 
 const foo = (arr) => {
+  let newArr = [];
   for (let i = 0; i < arr.length; i++) {
-    let { type, points } = arr[i];
+    let { lesson, type, points } = arr[i];
 
     if (type === 'additional') {
-      myLesson.splice(i, 1); // почему не удаляет последний элемент
-      i--;
+      continue;
     } else {
-      const obj = { points: points / 2 };
-      Object.assign(arr[i], obj);
+      const obj = { lesson: lesson, type: type, points: points / 2 };
+      newArr.push(obj);
     }
   }
-  return arr;
+  return newArr;
 };
-
+console.log(myLesson);
 console.log(foo(myLesson));
