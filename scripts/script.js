@@ -1,22 +1,15 @@
 'use strict';
 
-const a = document.querySelector('#a');
-const b = document.querySelector('#b');
-const sum = document.querySelector('#sum');
-const mult = document.querySelector('#mult');
-const res = document.querySelector('#res');
+function getResult(x, y) {
+  let result = 0;
+  let exp = String(x ** y);
+  console.log(exp);
 
-const calculator = {
-  sum: function () {
-    this.show(+a.value + +b.value);
-  },
-  mult: function () {
-    this.show(+a.value * +b.value);
-  },
-  show: function (result) {
-    res.value = result;
-  },
-};
+  for (let i = 0; i < exp.length; i++) {
+    result += Number(exp[i]);
+  }
 
-sum.addEventListener('click', calculator.sum.bind(calculator));
-mult.addEventListener('click', calculator.mult.bind(calculator));
+  return result;
+}
+
+console.log(getResult(4, 8));
