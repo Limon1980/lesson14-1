@@ -21,3 +21,12 @@ res2 = res2.replace(/(\d{2}):(\d{2})/g, (match) => {
   return `<b>${match}</b>`;
 });
 task2.innerHTML = res2;
+
+const body = document.querySelector('body');
+
+const res3 = body.innerHTML.replace(/"[^\w]+"|«[^\w]+»/g, (match) => {
+  return `<mark>${match}</mark>`;
+});
+
+body.innerHTML = res3;
+console.log(res3);
