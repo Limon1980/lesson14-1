@@ -28,5 +28,23 @@ const res3 = body.innerHTML.replace(/"[^\w]+"|«[^\w]+»/g, (match) => {
   return `<mark>${match}</mark>`;
 });
 
-body.innerHTML = res3;
-console.log(res3);
+const body4 = (body.innerHTML = res3);
+
+const res4 = body4.replace(
+  /http:\/\/(\w+\.\w+\.?\w+)([\/][\w]+[\/]([\w-]+))?\/?/g,
+  (match, val1, val2) => {
+    // console.log(match);
+    // console.log(val1);
+    return `<a href="${match}">${val1}</a>`;
+  }
+);
+
+const body5 = (body.innerHTML = res4);
+
+const res5 = body5.match(/#(\d?[ABCDEF]?){1,6}/gi);
+
+console.log(res5);
+// const res5 = body4.match(
+//   /http:\/\/\w+\.(\w+)\.?\w+([\/][\w]+[\/]([\w-]+))?\/?/g
+// );
+// console.log(res5);
